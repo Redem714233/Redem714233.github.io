@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { getAllPosts } from '@/lib/posts';
+import { getAllPosts, PostMetadata } from '@/lib/posts';
 
 export default function BlogPage() {
-  let posts = [];
+  let posts: PostMetadata[] = [];
   try {
     posts = getAllPosts();
   } catch (error) {

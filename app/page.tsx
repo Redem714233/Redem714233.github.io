@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ProjectCard } from '@/components/ProjectCard';
-import { getAllPosts } from '@/lib/posts';
+import { getAllPosts, PostMetadata } from '@/lib/posts';
 
 const projects = [
   {
@@ -37,7 +37,7 @@ const skills = [
 ];
 
 export default function Home() {
-  let recentPosts = [];
+  let recentPosts: PostMetadata[] = [];
   try {
     recentPosts = getAllPosts().slice(0, 2);
   } catch (error) {
