@@ -18,7 +18,11 @@
       "Bash(npm run:*)",
       "Bash(gh run:*)",
       "Bash(npx tsc:*)",
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:leerob.io)",
+      "WebFetch(domain:overreacted.io)",
+      "WebFetch(domain:joshwcomeau.com)",
+      "Bash(curl:*)"
     ]
   }
 }
