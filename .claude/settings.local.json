@@ -13,7 +13,10 @@
       "Bash(pdftotext:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(npm run:*)",
+      "Bash(gh run:*)"
     ]
   }
 }

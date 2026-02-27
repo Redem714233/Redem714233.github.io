@@ -17,25 +17,35 @@ export interface Post extends PostMetadata {
 }
 
 export function getAllPosts(): PostMetadata[] {
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames
-    .filter((fileName) => fileName.endsWith('.md'))
-    .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, '');
-      const fullPath = path.join(postsDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data } = matter(fileContents);
+  try {
+    if (!fs.existsSync(postsDirectory)) {
+      console.warn(`Posts directory not found: ${postsDirectory}`);
+      return [];
+    }
 
-      return {
-        slug,
-        title: data.title,
-        date: data.date,
-        tags: data.tags || [],
-        description: data.description || '',
-      };
-    });
+    const fileNames = fs.readdirSync(postsDirectory);
+    const allPostsData = fileNames
+      .filter((fileName) => fileName.endsWith('.md'))
+      .map((fileName) => {
+        const slug = fileName.replace(/\.md$/, '');
+        const fullPath = path.join(postsDirectory, fileName);
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
+        const { data } = matter(fileContents);
 
-  return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+        return {
+          slug,
+          title: data.title,
+          date: data.date,
+          tags: data.tags || [],
+          description: data.description || '',
+        };
+      });
+
+    return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+  } catch (error) {
+    console.error('Error reading posts:', error);
+    return [];
+  }
 }
 
 export function getPostBySlug(slug: string): Post {
@@ -54,10 +64,19 @@ export function getPostBySlug(slug: string): Post {
 }
 
 export function getAllPostSlugs() {
-  const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames
-    .filter((fileName) => fileName.endsWith('.md'))
-    .map((fileName) => ({
-      slug: fileName.replace(/\.md$/, ''),
-    }));
+  try {
+    if (!fs.existsSync(postsDirectory)) {
+      return [];
+    }
+
+    const fileNames = fs.readdirSync(postsDirectory);
+    return fileNames
+      .filter((fileName) => fileName.endsWith('.md'))
+      .map((fileName) => ({
+        slug: fileName.replace(/\.md$/, ''),
+      }));
+  } catch (error) {
+    console.error('Error reading post slugs:', error);
+    return [];
+  }
 }
