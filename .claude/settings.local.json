@@ -5,7 +5,15 @@
       "Bash(node:*)",
       "Bash(npm install:*)",
       "Bash(\"/cygdrive/c/Program Files/nodejs/npm\" install:*)",
-      "Bash(cmd:*)"
+      "Bash(cmd:*)",
+      "Bash(python:*)",
+      "Bash(unzip:*)",
+      "Bash(ls:*)",
+      "Bash(python3:*)",
+      "Bash(pdftotext:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }
