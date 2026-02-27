@@ -4,10 +4,15 @@ import { getAllPostSlugs, getPostBySlug } from '@/lib/posts';
 import { markdownToHtml } from '@/lib/markdown';
 
 export async function generateStaticParams() {
-  const posts = getAllPostSlugs();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  try {
+    const posts = getAllPostSlugs();
+    return posts.map((post) => ({
+      slug: post.slug,
+    }));
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
 }
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
