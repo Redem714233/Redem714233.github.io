@@ -4,6 +4,7 @@ import { getAllPostSlugs, getPostBySlug } from '@/lib/posts';
 import { markdownToHtml } from '@/lib/markdown';
 import { ReadingProgress } from '@/components/ReadingProgress';
 import { TableOfContents } from '@/components/TableOfContents';
+import { Comments } from '@/components/Comments';
 
 export async function generateStaticParams() {
   try {
@@ -78,6 +79,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               prose-td:text-gray-800 dark:prose-td:text-gray-200"
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
+
+          <Comments />
 
           <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
             <Link
