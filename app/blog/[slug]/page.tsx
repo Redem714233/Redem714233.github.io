@@ -56,13 +56,17 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
           <div
             className="prose prose-lg dark:prose-invert max-w-none
-              prose-headings:text-gray-800 dark:prose-headings:text-gray-100
-              prose-p:text-gray-700 dark:prose-p:text-gray-300
-              prose-a:text-blue-600 dark:prose-a:text-blue-400
-              prose-strong:text-gray-800 dark:prose-strong:text-gray-100
-              prose-code:text-gray-800 dark:prose-code:text-gray-100
-              prose-pre:bg-gray-800 dark:prose-pre:bg-gray-900
-              prose-table:text-gray-700 dark:prose-table:text-gray-300"
+              prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-gray-50
+              prose-p:text-gray-800 dark:prose-p:text-gray-200 prose-p:leading-relaxed
+              prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:font-medium
+              prose-strong:text-gray-900 dark:prose-strong:text-gray-100 prose-strong:font-semibold
+              prose-code:text-pink-600 dark:prose-code:text-pink-400 prose-code:font-mono prose-code:text-sm
+              prose-pre:bg-gray-900 dark:prose-pre:bg-gray-950 prose-pre:text-gray-100
+              prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-300 prose-blockquote:border-blue-500
+              prose-li:text-gray-800 dark:prose-li:text-gray-200
+              prose-table:text-gray-800 dark:prose-table:text-gray-200
+              prose-th:text-gray-900 dark:prose-th:text-gray-100 prose-th:font-semibold
+              prose-td:text-gray-800 dark:prose-td:text-gray-200"
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
 

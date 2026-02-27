@@ -49,13 +49,81 @@ body {
   }
 }
 
-/* 代码块样式优化 */
-pre {
-  @apply rounded-lg overflow-x-auto;
+/* 博客文章样式优化 */
+.prose {
+  font-size: 1.125rem;
+  line-height: 1.75;
 }
 
-code {
-  @apply text-sm;
+.prose p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  font-weight: 700;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  line-height: 1.3;
+}
+
+.prose code {
+  background-color: rgba(135, 131, 120, 0.15);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.prose pre {
+  @apply rounded-lg overflow-x-auto p-4;
+  background-color: #1e293b !important;
+}
+
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+  color: #e2e8f0;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+}
+
+.prose th {
+  background-color: rgba(59, 130, 246, 0.1);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
+.prose td {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
+.prose blockquote {
+  border-left: 4px solid #3b82f6;
+  padding-left: 1rem;
+  font-style: italic;
+  margin: 1.5em 0;
+}
+
+/* 深色模式下的表格优化 */
+@media (prefers-color-scheme: dark) {
+  .prose th {
+    background-color: rgba(59, 130, 246, 0.2);
+    border-color: rgba(75, 85, 99, 0.5);
+  }
+
+  .prose td {
+    border-color: rgba(75, 85, 99, 0.5);
+  }
+
+  .prose code {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 }
 
 /* 滚动条样式 */
