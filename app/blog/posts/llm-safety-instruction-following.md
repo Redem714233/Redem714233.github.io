@@ -497,6 +497,6 @@ MathIF 只关注数学推理，需要更全面的基准：
 ---
 
 **相关资源**：
-- [我的论文笔记（GitHub）](https://github.com/yourusername/llm-safety-notes)
-- [Safe Delta 复现代码](https://github.com/yourusername/safe-delta-reproduction)
-- [MathIF 基准测试](https://github.com/yourusername/mathif-benchmark)
+- [Scaling Reasoning, Losing Control 论文](https://arxiv.org/abs/2505.14810)
+- [Safe Delta 论文](https://arxiv.org/abs/2505.12038)
+- [MathIF 基准测试（论文附录）](https://arxiv.org/abs/2505.14810)
