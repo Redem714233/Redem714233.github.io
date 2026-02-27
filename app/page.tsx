@@ -4,17 +4,16 @@ import { Header } from '@/components/Header';
 
 const projects = [
   {
-    title: '项目示例 1',
-    description: '这是一个示例项目描述，展示你的技术栈和实现细节',
-    tags: ['React', 'TypeScript', 'Next.js'],
-    link: 'https://github.com/Redem714233',
-    demo: '#',
+    title: 'GUIAgent',
+    description: '基于 FastAPI + Playwright + VLM/LLM 的网页自动化系统，支持 DOM 标注、反思重试、SSE 流式执行和结构化数据提取',
+    tags: ['Python', 'FastAPI', 'Playwright', 'VLM', 'React'],
+    link: 'https://github.com/Redem714233/GuiAgent',
   },
   {
-    title: '项目示例 2',
-    description: '另一个精彩的项目，解决了某个实际问题',
-    tags: ['Node.js', 'PostgreSQL', 'Docker'],
-    link: 'https://github.com/Redem714233',
+    title: 'GEEPAFS - GPU 能效优化研究',
+    description: '通过 DVFS 动态频率调节提升 GPU 能效的应用透明策略，V100 上平均提升 26.7% 能效，性能损失仅 5.8%',
+    tags: ['CUDA', 'NVML', 'GPU', 'DVFS', 'C'],
+    link: 'https://github.com/Redem714233/Research-on-accelerating-computations-on-GPUs-through-DVFS',
   },
 ];
 
