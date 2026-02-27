@@ -14,14 +14,14 @@ export function Comments() {
     const script = document.createElement('script');
     script.src = 'https://giscus.app/client.js';
     script.setAttribute('data-repo', 'Redem714233/Redem714233.github.io');
-    script.setAttribute('data-repo-id', 'YOUR_REPO_ID'); // 需要配置
+    script.setAttribute('data-repo-id', 'R_kgDORZ_S1g');
     script.setAttribute('data-category', 'Announcements');
-    script.setAttribute('data-category-id', 'YOUR_CATEGORY_ID'); // 需要配置
+    script.setAttribute('data-category-id', 'DIC_kwDORZ_S1s4C3WJy');
     script.setAttribute('data-mapping', 'pathname');
     script.setAttribute('data-strict', '0');
     script.setAttribute('data-reactions-enabled', '1');
     script.setAttribute('data-emit-metadata', '0');
-    script.setAttribute('data-input-position', 'top');
+    script.setAttribute('data-input-position', 'bottom');
     script.setAttribute('data-theme', 'preferred_color_scheme');
     script.setAttribute('data-lang', 'zh-CN');
     script.setAttribute('data-loading', 'lazy');
