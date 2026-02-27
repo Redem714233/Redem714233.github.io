@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getAllPostSlugs, getPostBySlug } from '@/lib/posts';
 import { markdownToHtml } from '@/lib/markdown';
 import { ReadingProgress } from '@/components/ReadingProgress';
+import { TableOfContents } from '@/components/TableOfContents';
 
 export async function generateStaticParams() {
   try {
@@ -26,6 +27,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         <ReadingProgress />
+        <TableOfContents />
         <article className="max-w-4xl mx-auto px-4 py-16">
           <Link
             href="/blog"
