@@ -22,9 +22,17 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <article className="max-w-4xl mx-auto px-4 py-16">
           <Link
             href="/blog"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-8"
+            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-8 group"
           >
-            ← 返回博客列表
+            <svg
+              className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            返回博客列表
           </Link>
 
           <header className="mb-8">
@@ -57,6 +65,23 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               prose-table:text-gray-700 dark:prose-table:text-gray-300"
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
+
+          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <Link
+              href="/blog"
+              className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline group"
+            >
+              <svg
+                className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              返回博客列表
+            </Link>
+          </div>
         </article>
       </div>
     );

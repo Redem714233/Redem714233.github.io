@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Header } from "@/components/Header";
 
 export const metadata: Metadata = {
-  title: "Redem714233 - 个人主页",
-  description: "项目展示与技术博客",
+  title: "Redem - 全栈开发者 & AI 研究者",
+  description: "专注于构建高性能 Web 应用、AI Agent 系统和 GPU 计算优化",
 };
 
 export default function RootLayout({
@@ -14,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body className="antialiased">
+        <Header />
         {children}
       </body>
     </html>

@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { ProjectCard } from '@/components/ProjectCard';
-import { Header } from '@/components/Header';
 import { getAllPosts } from '@/lib/posts';
 
 const projects = [
@@ -38,12 +37,15 @@ const skills = [
 ];
 
 export default function Home() {
-  const recentPosts = getAllPosts().slice(0, 2);
+  let recentPosts = [];
+  try {
+    recentPosts = getAllPosts().slice(0, 2);
+  } catch (error) {
+    console.error('Failed to load posts:', error);
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <Header />
-
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <section className="mb-20 text-center">

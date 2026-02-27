@@ -2,7 +2,12 @@ import Link from 'next/link';
 import { getAllPosts } from '@/lib/posts';
 
 export default function BlogPage() {
-  const posts = getAllPosts();
+  let posts = [];
+  try {
+    posts = getAllPosts();
+  } catch (error) {
+    console.error('Failed to load posts:', error);
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
@@ -14,7 +19,7 @@ export default function BlogPage() {
         {posts.length === 0 ? (
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
             <p className="text-gray-600 dark:text-gray-300">
-              博客文章即将发布，敬请期待...
+              博客文章加载中...
             </p>
           </div>
         ) : (
