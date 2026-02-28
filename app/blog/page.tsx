@@ -11,11 +11,11 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="max-w-4xl mx-auto px-4 py-16">
-        <div className="mb-8">
+      <div className="max-w-6xl mx-auto px-4 py-16">
+        <div className="mb-12">
           <Link
             href="/"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline mb-6 group"
+            className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mb-6 group transition-colors"
           >
             <svg
               className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1"
@@ -27,9 +27,12 @@ export default function BlogPage() {
             </svg>
             返回主页
           </Link>
-          <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100">
+          <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-2">
             技术博客
           </h1>
+          <p className="text-gray-600 dark:text-gray-400">
+            共 {posts.length} 篇文章
+          </p>
         </div>
 
         {posts.length === 0 ? (
@@ -39,32 +42,75 @@ export default function BlogPage() {
             </p>
           </div>
         ) : (
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {posts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="block bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow p-6"
+                className="group block"
               >
-                <h2 className="text-2xl font-bold mb-2 text-gray-800 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400">
-                  {post.title}
-                </h2>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
-                  {post.date}
-                </p>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {post.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                <article className="h-full bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                  {/* 封面图或渐变背景 */}
+                  <div className="relative aspect-video overflow-hidden">
+                    {post.coverImage ? (
+                      <img
+                        src={post.coverImage}
+                        alt={post.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-primary opacity-90" />
+                    )}
+                  </div>
+
+                  {/* 内容区 */}
+                  <div className="p-6">
+                    <h2 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                      {post.title}
+                    </h2>
+
+                    <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3 text-sm leading-relaxed">
+                      {post.excerpt || post.description}
+                    </p>
+
+                    {/* 元信息 */}
+                    <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-500 mb-4">
+                      <time className="flex items-center gap-1">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        {post.date}
+                      </time>
+                      {post.readingTime && (
+                        <span className="flex items-center gap-1">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          {post.readingTime} min
+                        </span>
+                      )}
+                    </div>
+
+                    {/* 标签 */}
+                    {post.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-2">
+                        {post.tags.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-2 py-1 text-xs rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                        {post.tags.length > 3 && (
+                          <span className="px-2 py-1 text-xs text-gray-500">
+                            +{post.tags.length - 3}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </article>
               </Link>
             ))}
           </div>

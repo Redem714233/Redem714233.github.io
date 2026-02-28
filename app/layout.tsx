@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
+import ThemeCustomizer from "@/components/ThemeCustomizer";
 
 export const metadata: Metadata = {
   title: "Redem - 全栈开发者 & AI 研究者",
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className="antialiased">
         <Header />
         {children}
+        <ThemeCustomizer />
       </body>
     </html>
   );
