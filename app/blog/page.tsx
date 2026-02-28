@@ -1,5 +1,14 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAllPosts, PostMetadata } from '@/lib/posts';
+
+// 根据字符串生成一致的渐变色
+function getGradientForPost(slug: string): string {
+  const hues = [250, 280, 330, 30, 150, 200, 180, 60];
+  const hash = slug.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const hue = hues[hash % hues.length];
+  return `linear-gradient(135deg, hsl(${hue}, 70%, 50%), hsl(${hue + 30}, 70%, 40%))`;
+}
 
 export default function BlogPage() {
   let posts: PostMetadata[] = [];
@@ -51,15 +60,20 @@ export default function BlogPage() {
               >
                 <article className="h-full bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                   {/* 封面图或渐变背景 */}
-                  <div className="relative aspect-video overflow-hidden">
+                  <div className="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-700">
                     {post.coverImage ? (
-                      <img
+                      <Image
                         src={post.coverImage}
                         alt={post.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-primary opacity-90" />
+                      <div
+                        className="w-full h-full opacity-90 transition-opacity duration-300 group-hover:opacity-100"
+                        style={{ background: getGradientForPost(post.slug) }}
+                      />
                     )}
                   </div>
 
